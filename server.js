@@ -9,7 +9,7 @@ const image = require('./controllers/image');
 
 const db = knex({
   client: 'pg',
-  connection: process.env.DATABASE_URL,
+  // connection: process.env.DATABASE_URL,
   // searchPath:['knex', 'public'],
   // connection: {
   //   host : process.env.DATABASE_URL, //was localhost 
@@ -18,6 +18,15 @@ const db = knex({
   //   password : process.env.PASSWORD,
   //   database : 'smartbrain_yuqingslab_db'
   // }
+  connection : {
+    connectionString: process.env.DATABASE_URL,
+    ssl: {rejectUnauthorized:false},
+    host:  process.env.DATABASE_URL,
+    port : 5432,
+    user : process.env.DATABASE_USER,       
+    password : process.env.PASSWORD,
+    database : process.env.DATABASE_DB
+  }
 });
 
 const app = express();
