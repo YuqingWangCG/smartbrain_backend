@@ -9,13 +9,15 @@ const image = require('./controllers/image');
 
 const db = knex({
   client: 'pg',
-  connection: {
-    host : process.env.DATABASE_URL, //was localhost 
-    port : 5432,
-    user : 'smartbrain_yuqingslab_db_user',      
-    password : process.env.PASSWORD,
-    database : 'smartbrain_yuqingslab_db'
-  }
+  connection : process.env.DATABASE_URL,
+  searchPath:['knex', 'public'],
+  // connection: {
+  //   host : process.env.DATABASE_URL, //was localhost 
+  //   port : 5432,
+  //   user : 'smartbrain_yuqingslab_db_user',      
+  //   password : process.env.PASSWORD,
+  //   database : 'smartbrain_yuqingslab_db'
+  // }
 });
 
 const app = express();
@@ -23,10 +25,6 @@ const app = express();
 
 app.use(express.json());
 app.use(cors());
-
-// app.get('/', (req, res)=>{
-// 	db.select('*').from('users').then(users => res.json(users));
-// })
 
 app.post('/signin', signin.handleSignIn(db, bcrypt))
 
