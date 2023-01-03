@@ -9,15 +9,6 @@ const image = require('./controllers/image');
 
 const db = knex({
   client: 'pg',
-  // connection: process.env.DATABASE_URL,
-  // searchPath:['knex', 'public'],
-  // connection: {
-  //   host : process.env.DATABASE_URL, //was localhost 
-  //   port : 5432,
-  //   user : 'smartbrain_yuqingslab_db_user',      
-  //   password : process.env.PASSWORD,
-  //   database : 'smartbrain_yuqingslab_db'
-  // }
   connection : {
     connectionString: process.env.DATABASE_URL,
     ssl: {rejectUnauthorized:false},
