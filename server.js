@@ -37,8 +37,8 @@ app.put('/image', (req, res)=>{image.handleImage(req, res, db)})
 app.post('/imageurl', (req, res)=>{image.handleApiCall(req, res)})
 
  
-app.listen(process.env.DATABASE_URL || 3002, ()=>{
-	console.log(`app is running on port ${process.env.DATABASE_URL}`);
+app.listen(process.env.PORT || 3002, ()=>{
+	console.log(`app is running on port ${process.env.DATABASE_PORT}`);
 })
 
 
