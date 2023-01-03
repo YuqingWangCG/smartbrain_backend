@@ -10,7 +10,7 @@ const image = require('./controllers/image');
 const db = knex({
   client: 'pg',
   connection: process.env.DATABASE_URL,
-  searchPath:['knex', 'public'],
+  // searchPath:['knex', 'public'],
   // connection: {
   //   host : process.env.DATABASE_URL, //was localhost 
   //   port : 5432,
