@@ -9,7 +9,7 @@ const image = require('./controllers/image');
 
 const db = knex({
   client: 'pg',
-  connection : process.env.DATABASE_URL,
+  connection: process.env.DATABASE_URL,
   searchPath:['knex', 'public'],
   // connection: {
   //   host : process.env.DATABASE_URL, //was localhost 
@@ -37,7 +37,7 @@ app.put('/image', (req, res)=>{image.handleImage(req, res, db)})
 app.post('/imageurl', (req, res)=>{image.handleApiCall(req, res)})
 
  
-app.listen(3002, ()=>{
+app.listen(process.env.DATABASE_URL || 3002, ()=>{
 	console.log(`app is running on port ${process.env.DATABASE_URL}`);
 })
 
