@@ -18,10 +18,6 @@ const db = knex({
     password : process.env.PASSWORD,
     database : process.env.DATABASE_DB
   }
-  // connection: {
-  //   host: process.env.DATABASE_URL,
-  //   ssl:true,
-  // }
 });
 
 const app = express();
