@@ -1,4 +1,4 @@
-const handleGetProfile = (req, res, db)=>{
+const handleGetProfile = (req, res)=>(db)=>{   //the sequence of (req, res) and (db) is not important
 	const {id} = req.params;
 	db.select('*').from('users').where({id})
 	.then(user => {
@@ -10,10 +10,5 @@ const handleGetProfile = (req, res, db)=>{
 	})
 	.catch(err=>res.status(404).json('error'))
 }
-
-
-// module.exports = {
-// 	handleGetProfile
-// }
 
 export default handleGetProfile;
