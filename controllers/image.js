@@ -1,5 +1,5 @@
-const {ClarifaiStub, grpc} = require("clarifai-nodejs-grpc");
-
+// const {ClarifaiStub, grpc} = require("clarifai-nodejs-grpc");
+import {ClarifaiStub, grpc} from "clarifai-nodejs-grpc";
 const stub = ClarifaiStub.grpc();
 
 const API_KEY = process.env.API_KEY;
@@ -8,7 +8,7 @@ const metadata = new grpc.Metadata();
 metadata.set("authorization", `Key ${API_KEY}`);
 
 
-const handleApiCall = (req, res) => {
+const handleFaceDetection = (req, res) => {
 	stub.PostModelOutputs(
 	    {
 	        // This is the model ID of a publicly available General model. You may use any other public or custom model ID.
@@ -39,7 +39,7 @@ const handleApiCall = (req, res) => {
 
 
 
-const handleImage = (req, res, db)=>{
+const handleEntries = (req, res, db)=>{
 	const {id} = req.body;
 	db('users').where('id', '=', id)
 	.increment('entries', 1)
@@ -53,7 +53,9 @@ const handleImage = (req, res, db)=>{
 
 
 
-module.exports = {
-	handleImage,
-	handleApiCall
-}
+// module.exports = {
+// 	handleImage,
+// 	handleApiCall
+// }
+
+export {handleFaceDetection, handleEntries};

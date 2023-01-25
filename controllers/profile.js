@@ -12,6 +12,8 @@ const handleGetProfile = (req, res, db)=>{
 }
 
 
-module.exports = {
-	handleGetProfile
-}
+// module.exports = {
+// 	handleGetProfile
+// }
+
+export default handleGetProfile;

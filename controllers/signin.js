@@ -2,7 +2,7 @@
 const handleSignIn = (db, bcrypt)=>(req, res)=>{
     const  {email, password} = req.body; 
     if(!email || !password){
-      return res.status(400).json('incorrect form submission');
+      return res.status(400).json('empty input');
     }
 
 	db.select('email', 'hash').from ('login')
@@ -23,6 +23,7 @@ const handleSignIn = (db, bcrypt)=>(req, res)=>{
 	.catch(err => res.status(400).json('error'))
 }
 
-module.exports = {
-	handleSignIn
-}
+// module.exports = {
+// 	handleSignIn
+// }
+export default handleSignIn;
