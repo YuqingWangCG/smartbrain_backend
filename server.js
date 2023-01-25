@@ -32,7 +32,7 @@ app.post('/register', handleRegister(db, bcrypt))
 app.get('/profile/:id', handleGetProfile(db))
  
 // the route path can not be changed
-app.post('/imageurl', handleFaceDetection())
+app.post('/imageurl', (req, res)=>{handleFaceDetection(req, res)})
 
 app.put('/image', handleEntries(db))
 
