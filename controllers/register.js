@@ -5,13 +5,12 @@ const handleRegister = (db, bcrypt)=> (req, res)=>{
       return res.status(400).json('empty input');
    }
    const hash = bcrypt.hashSync(password);  //just store the password as hash
-   db.transaction( trx => {
-   	trx.insert({
-   		hash:hash,
-   		email:email
-   	})
-   	.into('login')
-   	.returning('email') //return an array
+   db.transaction( trx => {  //the first trx
+      trx('login').insert({
+         hash:hash,
+         email:email
+      })
+      .returning('email')
    	.then(loginEmail => {
    		return trx('users')
    		.returning('*')     //specifiy which column should be returned

@@ -1,4 +1,4 @@
-const handleEntries = (req, res, db)=>{
+const handleImage = (req, res, db)=>{
 	const {id} = req.body;
 	db('users').where('id', '=', id)
 	.increment('entries', 1)
@@ -9,4 +9,4 @@ const handleEntries = (req, res, db)=>{
 	.catch(err=>res.status(404).json('unable to get entries'))
 }
 
-export default handleEntries;
+export default handleImage;
